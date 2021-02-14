@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+
 class HomeController extends Controller
 {
     /**
@@ -9,7 +11,6 @@ class HomeController extends Controller
      *
      * @return void
      */
-   
 
     /**
      * Show the application dashboard.
@@ -18,6 +19,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('components.home-master');
+        $posts = Post::all();
+        return view('components.home-master', ['posts' => $posts]);
     }
 }
