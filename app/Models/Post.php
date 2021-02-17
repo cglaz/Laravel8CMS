@@ -16,4 +16,12 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getPostImageAttribute($value)
+    {
+        if (strpos($value, 'https://') !== false || strpos($value, 'http://') !== false) {
+            return $value;
+        }
+        return asset('storage/' . $value);
+    }
 }
