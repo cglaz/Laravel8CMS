@@ -24,5 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/post/create', [App\Http\Controllers\PostController::class, 'create'])->name('admin.create.post');
     Route::post('/admin/post/store', [App\Http\Controllers\PostController::class, 'store'])->name('admin.store.post');
     Route::get('/admin/posts/view', [App\Http\Controllers\PostController::class, 'view'])->name('admin.view.posts');
-    Route::get('/admin/post/{id}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('admin.edit.post');
+    Route::get('/admin/post/{post}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('admin.edit.post');
+    Route::delete('/admin/post/{post}/destroy', [App\Http\Controllers\PostController::class, 'destroy'])->name('admin.destroy.post');
+    Route::patch('/admin/post/{post}/update', [App\Http\Controllers\PostController::class, 'update'])->name('admin.update.post');
 });
