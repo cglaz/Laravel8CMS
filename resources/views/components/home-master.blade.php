@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
+  <title>Clean Blog - Laravel8CMS</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -29,16 +29,13 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="{{route('home.index')}}">Start Bootstrap</a>
+      <a class="navbar-brand" href="{{route('home.index')}}">Laravel8CMS</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
@@ -76,8 +73,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+            <h1>Laravel8CMS</h1>
+            <span class="subheading">A Blog created with Laravel 8 and Bootstrap theme</span>
           </div>
         </div>
       </div>
@@ -122,23 +119,15 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <ul class="list-inline text-center">
             <li class="list-inline-item">
-              <a href="#">
+              <a href="https://www.linkedin.com/in/cezary-glaz" target="_blank">
                 <span class="fa-stack fa-lg">
                   <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
+              <a href="https://github.com/cglaz" target="_blank">
                 <span class="fa-stack fa-lg">
                   <i class="fas fa-circle fa-stack-2x"></i>
                   <i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -146,7 +135,7 @@
               </a>
             </li>
           </ul>
-          <p class="copyright text-muted">Copyright &copy; Your Website 2020</p>
+          <p class="copyright text-muted">Copyright &copy; Laravel8CMS 2020</p>
         </div>
       </div>
     </div>
