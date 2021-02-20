@@ -8,11 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Clean Blog - Laravel8CMS</title>
+  <title>{{$page->title}} - Laravel8CMS</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -36,13 +35,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-
-          @foreach($pages as $page)
+        @foreach($pages as $page)
           <li class="nav-item">
             <a class="nav-link" href="{{route('page.index', $page->id)}}">{{$page->title}}</a>
           </li>
           @endforeach
-
           @if (Route::has('login'))
                     @auth
                     <li class="nav-item">
@@ -65,14 +62,13 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+  <header class="masthead" style="background-image: url('{{$page->post_image}}')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Laravel8CMS</h1>
-            <span class="subheading">A Blog created with Laravel 8 and Bootstrap theme</span>
+          <div class="page-heading">
+            <h1>{{$page->title}}</h1>
           </div>
         </div>
       </div>
@@ -83,35 +79,15 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-      @foreach($posts as $post)
-        <div class="post-preview">
-          <a href="{{route('post.index', $post->id)}}">
-            <h2 class="post-title">
-              {{$post->title}}
-            </h2>
-            <h3 class="post-subtitle">
-              {{Str::limit($post->body,100)}}
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            {{$post->user->name}}
-            on {{$post->created_at->diffForHumans()}}</p>
-        </div>
-        <hr>
-        @endforeach
-
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
+        <p>{{$page->body}}</p>
       </div>
     </div>
   </div>
 
   <hr>
 
-  <!-- Footer -->
-  <footer>
+   <!-- Footer -->
+   <footer>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -133,18 +109,18 @@
               </a>
             </li>
           </ul>
-          <p class="copyright text-muted">Copyright &copy; Laravel8CMS 2020</p>
+          <p class="copyright text-muted">Copyright &copy; Laravel8CMS 2021</p>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+  <script src="{{asset('js/clean-blog.min.js')}}"></script>
 
 </body>
 

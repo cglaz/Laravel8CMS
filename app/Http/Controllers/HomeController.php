@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use App\Models\Post;
 
 class HomeController extends Controller
@@ -19,7 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $pages = Page::all();
         $posts = Post::all();
-        return view('components.home-master', ['posts' => $posts]);
+        return view('components.home-master', ['posts' => $posts, 'pages' => $pages]);
     }
 }
