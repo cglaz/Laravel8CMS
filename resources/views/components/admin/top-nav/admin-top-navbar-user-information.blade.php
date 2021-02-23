@@ -15,7 +15,7 @@
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-fw"></i>
             <!-- Counter - Alerts -->
-            <span class="badge badge-danger badge-counter">3+</span>
+            <span class="badge badge-danger badge-counter"></span>
         </a>
     </li>
 
@@ -25,7 +25,7 @@
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-envelope fa-fw"></i>
             <!-- Counter - Messages -->
-            <span class="badge badge-danger badge-counter">7</span>
+            <span class="badge badge-danger badge-counter"></span>
         </a>
        </li>
 

@@ -38,4 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/page/create', [App\Http\Controllers\PageController::class, 'create'])->name('admin.create.page');
     Route::post('/admin/page/store', [App\Http\Controllers\PageController::class, 'store'])->name('admin.store.page');
     Route::delete('/admin/page/{page}/destroy', [App\Http\Controllers\PageController::class, 'destroy'])->name('admin.destroy.page');
+
+    Route::get('/admin/users/view', [App\Http\Controllers\UserController::class, 'view'])->name('admin.view.users');
 });
