@@ -27,21 +27,21 @@ class PageController extends Controller
     public function update(Page $page)
     {
         $inputs = request()->validate([
-            'title' => 'required|unique:posts|max:255',
-            'post_image' => 'mimes:jpg,bmp,png',
-            'body' => 'required',
+            'title' => ['required', 'string', 'max:255'],
+            'page_image' => ['file'],
+            'body' => ['string', 'max:5000'],
         ]);
 
-        if (request('post_image')) {
+        if (request('page_image')) {
 
-            $inputs['post_image'] = request('post_image')->store('images');
-            $page->post_image = $inputs['post_image'];
+            $inputs['page_image'] = request('page_image')->store('images');
+            $page->page_image = $inputs['page_image'];
         }
 
         $page->title = $inputs['title'];
         $page->body = $inputs['body'];
 
-        $page->save();
+        $page->update($inputs);
 
         session()->flash('update', 'Page: ' . $page->title . ' has been updated');
 
@@ -57,14 +57,14 @@ class PageController extends Controller
     {
 
         $inputs = request()->validate([
-            'title' => 'required|unique:posts|max:255',
-            'post_image' => 'mimes:jpg,bmp,png',
+            'title' => 'required|unique:pages|max:255',
+            'page_image' => 'mimes:jpg,bmp,png',
             'body' => 'required',
         ]);
 
-        if (request('post_image')) {
+        if (request('page_image')) {
 
-            $inputs['post_image'] = request('post_image')->store('images');
+            $inputs['page_image'] = request('page_image')->store('images');
         }
 
         $page = Page::create($inputs);

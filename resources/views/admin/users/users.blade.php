@@ -20,9 +20,9 @@
 @foreach($users as $user)
     <tr>
       <td>{{$user->id}}</td>
-      <td>{{$user->name}}</td>
+      <td><a href="{{route('admin.show.user', $user->id)}}">{{$user->name}}</a></td>
       <td>{{$user->email}}</td>
-      <td></td>
+      <td><img width="70px;" src="{{$user->avatar}}" alt=""></td>
       <td></td>
       <td>{{$user->created_at}}</td>
       <td>

@@ -17,9 +17,9 @@
                 <div class="form-group">
     		        <label for="file">Photo</label>
     		        <input class="form-control-file"
-                           name="post_image"
+                           name="page_image"
                            type="file"
-                           id="post_image" />
+                           id="page_image" />
     		    </div>
 
     		    <div class="form-group">

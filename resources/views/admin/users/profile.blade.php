@@ -1,0 +1,73 @@
+<x-admin-master>
+@section('content')
+<h1 class="text-center">User Profil for: {{$user->name}}</h1>
+
+<div class="row">
+    <div class="col-sm-6">
+    <div class="d-flex flex-column mr-4 ml-4">
+            <form action="{{route('admin.update.user.profile', $user)}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                <div class="mb-4">
+                    <img class="img-profile rounded-circle" height="50px" src="{{$user->avatar}}">
+                </div>
+                <div class="form-grup">
+                    <input type="file" name="avatar">
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text"
+                        name="name"
+                        class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
+                        id="name"
+                        value="{{$user->name}}">
+                        @error('name')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text"
+                        name="email"
+                        class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}"
+                        id="email"
+                        value="{{$user->email}}">
+
+                        @error('email')
+                            <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password"
+                            name="password"
+                            class="form-control"
+                            id="password">
+                            @error('password')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
+                </div>
+                <div class="form-group">
+                    <label for="password-confirmation">Confirm password</label>
+                    <input type="password"
+                            name="password_confirmation"
+                            class="form-control"
+                            id="password-confirmation">
+                            @error('password_confirmation')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
+                </div>
+    		    <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        Submit
+                    </button>
+    		        <button class="btn btn-default">
+    		            Cancel
+    		        </button>
+    		    </div>
+    	    </form>
+            </div>
+        </div>
+    </div>
+@endsection
+</x-admin-master>

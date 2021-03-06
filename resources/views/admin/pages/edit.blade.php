@@ -18,11 +18,11 @@
 
                 <div class="form-group">
     		        <label for="file">Photo</label>
-                    <div class="mb-4"><img width="400px;" src="{{$page->post_image}}" alt=""></div>
+                    <div class="mb-4"><img width="400px;" src="{{$page->page_image}}" alt=""></div>
     		        <input class="form-control-file"
-                           name="post_image"
+                           name="page_image"
                            type="file"
-                           id="post_image"
+                           id="page_image"
                            />
     		    </div>
 

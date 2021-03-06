@@ -38,16 +38,18 @@
             <span class="mr-2 d-none d-lg-inline text-gray-600 small">@if(Auth::check())
                         {{auth()->user()->name}}
                     @endif</span>
-            <img class="img-profile rounded-circle"
-                src="img/undraw_profile.svg">
+            <img width="50px;" class="img-profile rounded-circle"
+                src="{{auth()->user()->avatar}}">
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">
+            @if(Auth::check())
+            <a class="dropdown-item" href="{{route('admin.show.user', auth()->user())}}">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                 Profile
             </a>
+            @endif
             <a class="dropdown-item" href="#">
                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                 Settings

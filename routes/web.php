@@ -40,4 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/page/{page}/destroy', [App\Http\Controllers\PageController::class, 'destroy'])->name('admin.destroy.page');
 
     Route::get('/admin/users/view', [App\Http\Controllers\UserController::class, 'view'])->name('admin.view.users');
+    Route::get('/admin/user/{user}/show', [App\Http\Controllers\UserController::class, 'show'])->name('admin.show.user');
+    Route::put('/admin/user/{user}/update', [App\Http\Controllers\UserController::class, 'update'])->name('admin.update.user.profile');
 });

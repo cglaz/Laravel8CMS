@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Page extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'page_image',
+        'body',
+    ];
 
-    public function getPostImageAttribute($value)
+    public function getPageImageAttribute($value)
     {
         if (strpos($value, 'https://') !== false || strpos($value, 'http://') !== false) {
             return $value;

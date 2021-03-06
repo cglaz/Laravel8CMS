@@ -21,7 +21,7 @@
   <thead>
     <tr>
       <th scope="col">Title</th>
-      <th scope="col">Post image</th>
+      <th scope="col">Page image</th>
       <th scope="col">Created at</th>
       <th scope="col">Upadted at</th>
       <th scope="col">Delete</th>
@@ -31,7 +31,7 @@
 @foreach($pages as $page)
     <tr>
       <td><a href="{{route('admin.edit.page', $page->id)}}">{{$page->title}}</a></td>
-      <td><img height="50px" src="{{$page->post_image}}" alt=""></td>
+      <td><img height="50px" src="{{$page->page_image}}" alt=""></td>
       <td>{{$page->created_at->diffForHumans()}}</td>
       <td>{{$page->updated_at->diffForHumans()}}</td>
       <td>

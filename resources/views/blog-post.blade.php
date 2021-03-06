@@ -35,18 +35,27 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+        @foreach($pages as $page)
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="{{route('page.index', $page->id)}}">{{$page->title}}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="post.html">Sample Post</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
+        @endforeach
+        @if (Route::has('login'))
+                    @auth
+                    <li class="nav-item">
+                        <a href="{{ url('/admin') }}" class="nav-link">Admin</a>
+                    </li>
+                    @else
+                        <li class="nav-item">
+                             <a href="{{ route('login') }}" class="nav-link">Login</a>
+                        <li class="nav-item">
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}" class="nav-link">Register</a>
+                        </li>
+                        @endif
+                    @endauth
+            @endif
         </ul>
       </div>
     </div>

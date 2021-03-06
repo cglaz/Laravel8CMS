@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,11 @@ class PostController extends Controller
 {
     public function show(Post $post)
     {
-        return view('blog-post', ['post' => $post]);
+        $pages = Page::all();
+        return view('blog-post', [
+            'post' => $post,
+            'pages' => $pages,
+        ]);
     }
 
     public function create()
@@ -53,9 +58,9 @@ class PostController extends Controller
     public function update(Post $post)
     {
         $inputs = request()->validate([
-            'title' => 'required|unique:posts|max:255',
-            'post_image' => 'mimes:jpg,bmp,png',
-            'body' => 'required',
+            'title' => ['required', 'string', 'max:255'],
+            'post_image' => ['file'],
+            'body' => ['string', 'max:5000'],
         ]);
 
         if (request('post_image')) {
@@ -67,7 +72,7 @@ class PostController extends Controller
         $post->title = $inputs['title'];
         $post->body = $inputs['body'];
 
-        $post->save();
+        $post->update($inputs);
 
         session()->flash('update', 'Post has been updated');
 
