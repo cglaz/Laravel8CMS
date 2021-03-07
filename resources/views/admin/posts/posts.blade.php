@@ -24,6 +24,7 @@
       <th scope="col">Owner</th>
       <th scope="col">Title</th>
       <th scope="col">Post image</th>
+      <th scope="col">Slug</th>
       <th scope="col">Created at</th>
       <th scope="col">Upadted at</th>
       <th scope="col">Delete</th>
@@ -32,13 +33,14 @@
   <tbody>
 @foreach($posts as $post)
     <tr>
-      <th scope="row">{{$post->user->name}}</th>
-      <td><a href="{{route('admin.edit.post', $post->id)}}">{{$post->title}}</a></td>
+      <td>{{$post->user->name}}</td>
+      <td><a href="{{route('admin.edit.post', $post->slug)}}">{{$post->title}}</a></td>
       <td><img height="50px" src="{{$post->post_image}}" alt=""></td>
+      <td>/{{$post->slug}}</td>
       <td>{{$post->created_at->diffForHumans()}}</td>
       <td>{{$post->updated_at->diffForHumans()}}</td>
       <td>
-        <form action="{{route('admin.destroy.post',$post->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('admin.destroy.post',$post->slug)}}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('DELETE')
 

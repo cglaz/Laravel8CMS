@@ -37,7 +37,7 @@
         <ul class="navbar-nav ml-auto">
         @foreach($pages as $page)
           <li class="nav-item">
-            <a class="nav-link" href="{{route('page.index', $page->id)}}">{{$page->title}}</a>
+            <a class="nav-link" href="{{route('page.index', $page->slug)}}">{{$page->title}}</a>
           </li>
           @endforeach
           @if (Route::has('login'))
@@ -62,7 +62,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('{{$page->post_image}}')">
+  <header class="masthead" style="background-image: url('{{$page->page_image}}')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">

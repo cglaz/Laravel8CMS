@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
@@ -28,9 +29,12 @@ class PageController extends Controller
     {
         $inputs = request()->validate([
             'title' => ['required', 'string', 'max:255'],
+            'slug' => 'required|min:3|max:255|unique:pages,id,' . $page->slug,
             'page_image' => ['file'],
             'body' => ['string', 'max:5000'],
         ]);
+
+        $inputs['slug'] = Str::slug($inputs['slug'], '-');
 
         if (request('page_image')) {
 
@@ -58,9 +62,12 @@ class PageController extends Controller
 
         $inputs = request()->validate([
             'title' => 'required|unique:pages|max:255',
+            'slug' => 'required|min:3|max:255|unique:pages',
             'page_image' => 'mimes:jpg,bmp,png',
             'body' => 'required',
         ]);
+
+        $inputs['slug'] = Str::slug($inputs['slug'], '-');
 
         if (request('page_image')) {
 

@@ -12,7 +12,13 @@ class Page extends Model
         'title',
         'page_image',
         'body',
+        'slug',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function getPageImageAttribute($value)
     {

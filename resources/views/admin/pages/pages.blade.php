@@ -22,6 +22,7 @@
     <tr>
       <th scope="col">Title</th>
       <th scope="col">Page image</th>
+      <th scope="col">Slug</th>
       <th scope="col">Created at</th>
       <th scope="col">Upadted at</th>
       <th scope="col">Delete</th>
@@ -30,12 +31,13 @@
   <tbody>
 @foreach($pages as $page)
     <tr>
-      <td><a href="{{route('admin.edit.page', $page->id)}}">{{$page->title}}</a></td>
+      <td><a href="{{route('admin.edit.page', $page->slug)}}">{{$page->title}}</a></td>
       <td><img height="50px" src="{{$page->page_image}}" alt=""></td>
+      <td>/{{$page->slug}}</td>
       <td>{{$page->created_at->diffForHumans()}}</td>
       <td>{{$page->updated_at->diffForHumans()}}</td>
       <td>
-        <form action="{{route('admin.destroy.page', $page->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('admin.destroy.page', $page->slug)}}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('DELETE')
 

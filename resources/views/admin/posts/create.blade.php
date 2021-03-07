@@ -22,6 +22,14 @@
                            id="post_image" />
     		    </div>
 
+				<div class="form-group">
+    		        <label for="slug">Slug</label>
+    		        <input class="form-control-file"
+                           name="slug"
+                           type="text"
+                           id="slug" />
+    		    </div>
+
     		    <div class="form-group">
     		        <label for="description">Content</label>
     		        <textarea rows="5" class="form-control" name="body" id="body" ></textarea>

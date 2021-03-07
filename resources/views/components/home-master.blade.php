@@ -39,7 +39,7 @@
 
           @foreach($pages as $page)
           <li class="nav-item">
-            <a class="nav-link" href="{{route('page.index', $page->id)}}">{{$page->title}}</a>
+            <a class="nav-link" href="{{route('page.index', $page->slug)}}">{{$page->title}}</a>
           </li>
           @endforeach
 
@@ -85,7 +85,7 @@
       <div class="col-lg-8 col-md-10 mx-auto">
       @foreach($posts as $post)
         <div class="post-preview">
-          <a href="{{route('post.index', $post->id)}}">
+          <a href="{{route('post.index', $post->slug)}}">
             <h2 class="post-title">
               {{$post->title}}
             </h2>

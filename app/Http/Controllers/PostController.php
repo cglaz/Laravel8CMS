@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -27,9 +28,12 @@ class PostController extends Controller
 
         $inputs = request()->validate([
             'title' => 'required|unique:posts|max:255',
+            'slug' => 'required|min:3|max:255|unique:posts',
             'post_image' => 'mimes:jpg,bmp,png',
             'body' => 'required',
         ]);
+
+        $inputs['slug'] = Str::slug($inputs['slug'], '-');
 
         if (request('post_image')) {
 
@@ -59,9 +63,12 @@ class PostController extends Controller
     {
         $inputs = request()->validate([
             'title' => ['required', 'string', 'max:255'],
+            'slug' => 'required|min:3|max:255|unique:posts,id,' . $post->slug,
             'post_image' => ['file'],
             'body' => ['string', 'max:5000'],
         ]);
+
+        $inputs['slug'] = Str::slug($inputs['slug'], '-');
 
         if (request('post_image')) {
 

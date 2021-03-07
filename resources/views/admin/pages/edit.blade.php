@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="h3 mb-3 text-gray-800 text-center">Edit Page</h1>
 
-    <form action="{{route('admin.update.page',$page->id)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('admin.update.page',$page->slug)}}" method="POST" enctype="multipart/form-data">
                  @csrf
                  @method('PATCH')
     		    <div class="form-group">
@@ -13,6 +13,16 @@
                            name="title"
                            id="title"
                            value="{{$page->title}}" />
+
+    		    </div>
+
+				<div class="form-group">
+    		        <label for="slug">Slug</label>
+    		        <input type="text"
+                           class="form-control"
+                           name="slug"
+                           id="slug"
+                           value="{{$page->slug}}" />
 
     		    </div>
 
