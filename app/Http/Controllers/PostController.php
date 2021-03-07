@@ -18,6 +18,13 @@ class PostController extends Controller
         ]);
     }
 
+    public function sitemap()
+    {
+        $pages = Page::orderBy('updated_at', 'DESC')->get();
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
+        return response()->view('sitemap', compact('posts', 'pages'))->header('Content-Type', 'text/xml');
+    }
+
     public function create()
     {
         return view('admin.posts.create');

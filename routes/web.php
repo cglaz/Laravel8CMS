@@ -18,6 +18,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('/post/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('post.index');
 Route::get('/page/{page}', [App\Http\Controllers\PageController::class, 'show'])->name('page.index');
+Route::get('/sitemap.xml', [App\Http\Controllers\PostController::class, 'sitemap'])->name('sitemap');
 
 Route::middleware('auth')->group(function () {
 
