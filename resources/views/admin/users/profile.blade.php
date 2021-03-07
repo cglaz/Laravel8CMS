@@ -1,6 +1,6 @@
 <x-admin-master>
 @section('content')
-<h1 class="text-center">User Profil for: {{$user->name}}</h1>
+<h1 class="text-center mb-4">User Profil for: {{$user->name}}</h1>
 
 <div class="row">
     <div class="col-sm-6">

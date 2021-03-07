@@ -16,38 +16,38 @@
           <strong>{{ $message }}</strong>
       </div>
     @endif
+    <div class="ml-3 mr-3">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Page image</th>
+              <th scope="col">Slug</th>
+              <th scope="col">Created at</th>
+              <th scope="col">Upadted at</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+        @foreach($pages as $page)
+            <tr>
+              <td><a href="{{route('admin.edit.page', $page->slug)}}">{{$page->title}}</a></td>
+              <td><img height="50px" src="{{$page->page_image}}" alt=""></td>
+              <td>/{{$page->slug}}</td>
+              <td>{{$page->created_at->diffForHumans()}}</td>
+              <td>{{$page->updated_at->diffForHumans()}}</td>
+              <td>
+                <form action="{{route('admin.destroy.page', $page->slug)}}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  @method('DELETE')
 
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Page image</th>
-      <th scope="col">Slug</th>
-      <th scope="col">Created at</th>
-      <th scope="col">Upadted at</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-@foreach($pages as $page)
-    <tr>
-      <td><a href="{{route('admin.edit.page', $page->slug)}}">{{$page->title}}</a></td>
-      <td><img height="50px" src="{{$page->page_image}}" alt=""></td>
-      <td>/{{$page->slug}}</td>
-      <td>{{$page->created_at->diffForHumans()}}</td>
-      <td>{{$page->updated_at->diffForHumans()}}</td>
-      <td>
-        <form action="{{route('admin.destroy.page', $page->slug)}}" method="POST" enctype="multipart/form-data">
-          @csrf
-          @method('DELETE')
-
-          <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
-      </td>
-    </tr>
-@endforeach
-  </tbody>
-</table>
-
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+        @endforeach
+          </tbody>
+      </table>
+    </div>
 @endsection
 </x-admin-master>
