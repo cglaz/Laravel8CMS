@@ -24,7 +24,7 @@
             <td></td>
             <td>{{$user->created_at}}</td>
             <td>
-              <form action="" method="POST" enctype="multipart/form-data">
+              <form action="{{route('admin.destroy.user',$user->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
 

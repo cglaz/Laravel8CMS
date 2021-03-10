@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -33,6 +34,13 @@ class UserController extends Controller
 
         $user->update($inputs);
 
+        return back();
+    }
+
+    public function destroy(User $user, Request $request)
+    {
+        $user->delete();
+        $request->session()->flash('destroy', 'User: ' . $user->name . ' has been deleted');
         return back();
     }
 }
