@@ -32,6 +32,7 @@ class PostController extends Controller
 
     public function store()
     {
+        $this->authorize('create', Post::class);
 
         $inputs = request()->validate([
             'title' => 'required|unique:posts|max:255',
@@ -57,7 +58,7 @@ class PostController extends Controller
 
     public function view()
     {
-        $posts = Post::all();
+        $posts = auth()->user()->posts;
         return view('admin.posts.posts', ['posts' => $posts]);
     }
 
@@ -98,6 +99,8 @@ class PostController extends Controller
 
     public function destroy(Post $post, Request $request)
     {
+
+        $this->authorize('delete', $post);
 
         $post->delete();
 

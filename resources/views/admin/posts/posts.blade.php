@@ -36,7 +36,7 @@
         <td>{{$post->user->name}}</td>
         <td><a href="{{route('admin.edit.post', $post->slug)}}">{{$post->title}}</a></td>
         <td><img height="50px" src="{{$post->post_image}}" alt=""></td>
-        <td>/{{$post->slug}}</td>
+        <td><a href="http://127.0.0.1:8000/post/{{$post->slug}}">/{{$post->slug}}</a></td>
         <td>{{$post->created_at->diffForHumans()}}</td>
         <td>{{$post->updated_at->diffForHumans()}}</td>
         <td>
