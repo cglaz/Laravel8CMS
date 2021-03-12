@@ -53,6 +53,6 @@
     </tbody>
   </table>
 </div>
-
+{{$posts->links()}}
 @endsection
 </x-admin-master>

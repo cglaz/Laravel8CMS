@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/admin/post/{post}/destroy', [App\Http\Controllers\PostController::class, 'destroy'])->name('admin.destroy.post');
     Route::patch('/admin/post/{post}/update', [App\Http\Controllers\PostController::class, 'update'])->name('admin.update.post');
+    Route::get('/admin/post/{post}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('admin.edit.post');
 
     Route::get('/admin/pages/view', [App\Http\Controllers\PageController::class, 'view'])->name('admin.view.pages');
     Route::get('/admin/page/{page}/edit', [App\Http\Controllers\PageController::class, 'edit'])->name('admin.edit.page');
@@ -44,5 +45,3 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/user/{user}/update', [App\Http\Controllers\UserController::class, 'update'])->name('admin.update.user.profile');
     Route::delete('/admin/user/{user}/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('admin.destroy.user');
 });
-
-Route::get('/admin/post/{post}/edit', [App\Http\Controllers\PostController::class, 'edit'])->middleware('can:view,post')->name('admin.edit.post');
