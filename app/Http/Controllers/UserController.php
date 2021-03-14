@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function view()
     {
-        $users = User::all();
+        $users = User::orderBy('created_at', 'ASC')->paginate(10);
         return view('admin.users.users', ['users' => $users]);
     }
 
@@ -22,9 +22,11 @@ class UserController extends Controller
     {
         $inputs = request()->validate([
 
+            'username' => ['required', 'string', 'max:255', 'alpha_dash'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'string', 'max:255'],
             'avatar' => ['file'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
         if (request('avatar')) {

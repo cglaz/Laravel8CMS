@@ -8,12 +8,26 @@
             <form action="{{route('admin.update.user.profile', $user)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+
                 <div class="mb-4">
                     <img class="img-profile rounded-circle" height="50px" src="{{$user->avatar}}">
                 </div>
                 <div class="form-grup">
                     <input type="file" name="avatar">
                 </div>
+
+                <div class="form-group">
+                    <label for="name">Username</label>
+                    <input type="text"
+                        name="username"
+                        class="form-control {{$errors->has('username') ? 'is-invalid' : ''}}"
+                        id="username"
+                        value="{{$user->username}}">
+                        @error('username')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                </div>
+
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text"
@@ -25,6 +39,7 @@
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                 </div>
+
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text"
@@ -37,6 +52,7 @@
                             <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                 </div>
+
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password"
@@ -47,6 +63,7 @@
                                 <div class="alert alert-danger">{{$message}}</div>
                             @enderror
                 </div>
+
                 <div class="form-group">
                     <label for="password-confirmation">Confirm password</label>
                     <input type="password"
@@ -57,6 +74,7 @@
                                 <div class="alert alert-danger">{{$message}}</div>
                             @enderror
                 </div>
+
     		    <div class="form-group">
                     <button type="submit" class="btn btn-primary">
                         Submit
