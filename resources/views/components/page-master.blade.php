@@ -35,11 +35,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        @foreach($pages as $page)
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('page.index', $page->slug)}}">{{$page->title}}</a>
-          </li>
-          @endforeach
+
           @if (Route::has('login'))
                     @auth
                     <li class="nav-item">

@@ -10,8 +10,8 @@ class PageController extends Controller
 {
     public function show(Page $page)
     {
-        $pages = Page::all();
-        return view('components.page-master', ['page' => $page, 'pages' => $pages]);
+
+        return view('components.page-master', ['page' => $page]);
     }
 
     public function view()
