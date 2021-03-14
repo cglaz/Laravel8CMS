@@ -10,7 +10,6 @@ class PageController extends Controller
 {
     public function show(Page $page)
     {
-
         return view('components.page-master', ['page' => $page]);
     }
 
@@ -90,4 +89,5 @@ class PageController extends Controller
         $request->session()->flash('destroy', 'Page: ' . $page->title . ' has been deleted');
         return back();
     }
+
 }

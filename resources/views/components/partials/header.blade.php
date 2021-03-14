@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>@yield('meta_title','A default title')</title>
-  <meta name="description" content="@yield('meta_description','default description')">
-
-  <link rel="canonical" href="{{url()->current()}}"/>
+  <title>{{ isset($post->title) ? $post->title : 'Default' }} - Laravel8CMS</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -23,5 +17,4 @@
 
   <!-- Custom styles for this template -->
   <link href="{{asset('css/clean-blog.min.css')}}" rel="stylesheet">
-
 </head>

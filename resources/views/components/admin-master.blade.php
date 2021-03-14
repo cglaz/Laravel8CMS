@@ -58,7 +58,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <!-- Nav Item - Utilities Collapse Menu -->
-           <x-sidebar-posts-links></x-sidebar-posts-links>
+           <x-admin.sidebar.sidebar-posts-links></x-admin.sidebar.sidebar-posts-links>
 
 
 

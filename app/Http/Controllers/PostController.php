@@ -12,7 +12,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $pages = Page::all();
-        return view('blog-post', [
+        return view('components.blog-post', [
             'post' => $post,
             'pages' => $pages,
         ]);

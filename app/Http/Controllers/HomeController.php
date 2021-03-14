@@ -20,8 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
-        $posts = Post::all();
+        $pages = Page::orderBy('updated_at', 'DESC')->get();
+        $posts = Post::orderBy('updated_at', 'DESC')->paginate(5);
         return view('components.home-master', ['posts' => $posts, 'pages' => $pages]);
     }
 }
