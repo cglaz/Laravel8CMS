@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -80,7 +81,7 @@ class User extends Authenticatable
 
         foreach ($this->roles as $role) {
 
-            if ($role_name == $role->name) {
+            if (Str::lower($role_name) == Str::lower($role->name)) {
                 return true;
             }
 

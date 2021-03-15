@@ -28,6 +28,7 @@
                 </div>
             </li>
 
+            @if(auth()->user()->userHasRole('Admin'))
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -41,3 +42,4 @@
                     </div>
                 </div>
             </li>
+            @endif
