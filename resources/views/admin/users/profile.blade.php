@@ -77,7 +77,7 @@
 
     		    <div class="form-group">
                     <button type="submit" class="btn btn-primary">
-                        Submit
+                        Update
                     </button>
     		        <button class="btn btn-default">
     		            Cancel
@@ -86,6 +86,74 @@
     	    </form>
             </div>
         </div>
+    </div>
+
+
+    <div class="d-flex flex-column mr-4 ml-4 mb-8">
+    <h1 class="text-center mb-4">Roles</h1>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="d-flex flex-column mr-4 ml-4">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Options</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Slug</th>
+                        <th scope="col">Attach</th>
+                        <th scope="col">Detach</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                @foreach($roles as $role)
+                    <tr>
+                        <td><input type="checkbox"
+                        @foreach($user->roles as $user_role)
+                                @if($user_role->slug == $role->slug)
+                                    checked
+                                @endif
+                        @endforeach
+                        ></td>
+                        <td>{{$role->id}}</td>
+                        <td>{{$role->name}}</td>
+                        <td>{{$role->slug}}</td>
+                        <td>
+                            <form method="post" action="{{route('admin.user.role.attach', $user)}}">
+                            @method('PUT')
+                            @csrf
+                            <input type="hidden" name="role" value="{{$role->id}}">
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                @if($user->roles->contains($role))
+                                    disabled
+                                @endif
+                            >Attach</button>
+                            </form>
+                        </td>
+                        <td>
+                        <form method="post" action="{{route('admin.user.role.detach', $user)}}">
+                            @method('PUT')
+                            @csrf
+                            <input type="hidden" name="role" value="{{$role->id}}">
+                        <button
+                            type="submit"
+                            class="btn btn-danger"
+                            @if(!$user->roles->contains($role))
+                                disabled
+                            @endif
+                        >Detach</button>
+                        </form>
+                        </td>
+                    </tr>
+                @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     </div>
 @endsection
 </x-admin-master>

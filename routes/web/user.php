@@ -6,8 +6,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/user/{user}/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('admin.destroy.user');
 });
 
-Route::middleware('role:admin')->group(function () {
+Route::middleware('role:admin', 'auth')->group(function () {
     Route::get('/admin/users/view', [App\Http\Controllers\UserController::class, 'view'])->name('admin.view.users');
+    Route::put('/admin/users/roles/{user}/attach', [App\Http\Controllers\UserController::class, 'attach'])->name('admin.user.role.attach');
+    Route::put('/admin/users/roles/{user}/detach', [App\Http\Controllers\UserController::class, 'detach'])->name('admin.user.role.detach');
 
 });
 

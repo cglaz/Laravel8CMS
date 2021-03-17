@@ -39,7 +39,7 @@ class UserPolicy
             return true;
         }
 
-        if ($user->userHasRole('subscriber')) {
+        if ($user->userHasRole('user')) {
 
             return true;
         }
