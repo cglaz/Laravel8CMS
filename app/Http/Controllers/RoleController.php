@@ -41,4 +41,14 @@ class RoleController extends Controller
         session()->flash('destroy', 'Role: ' . $role->name . ' has been deleted');
         return back();
     }
+
+    public function update(Role $role)
+    {
+        $role->name = Str::ucfirst(request('name'));
+        $role->slug = Str::of(request('name'))->slug('-');
+
+        $role->save();
+
+        return back();
+    }
 }
