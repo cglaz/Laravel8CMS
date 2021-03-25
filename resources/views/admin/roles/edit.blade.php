@@ -61,13 +61,33 @@
                         <td>{{$permission->name}}</td>
                         <td>{{$permission->slug}}</td>
                         <td>
-                        <form action="" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('DELETE')
-
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                            <form method="post" action="{{route('admin.role.permission.attach', $role)}}">
+                            @method('PUT')
+                            @csrf
+                            <input type="hidden" name="permission" value="{{$permission->id}}">
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                @if($role->permissions->contains($permission))
+                                    disabled
+                                @endif
+                            >Attach</button>
+                            </form>
+                        </td>
+                        <td>
+                        <form method="post" action="{{route('admin.role.permission.detach',$role)}}">
+                            @method('PUT')
+                            @csrf
+                            <input type="hidden" name="permission" value="{{$permission->id}}">
+                        <button
+                            type="submit"
+                            class="btn btn-danger"
+                            @if(!$role->permissions->contains($permission))
+                                disabled
+                            @endif
+                        >Detach</button>
                         </form>
-                    </td>
+                        </td>
                     </tr>
                     @endforeach
                     </tbody>
