@@ -58,6 +58,7 @@ class PostController extends Controller
 
     public function view()
     {
+
         $posts = auth()->user()->posts()->paginate(5);
         return view('admin.posts.posts', ['posts' => $posts]);
     }

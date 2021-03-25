@@ -30,7 +30,15 @@ class PostPolicy
      */
     public function view(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+        if ($user->userHasRole('admin')) {
+
+            return true;
+        }
+
+        if ($user->id === $post->user_id) {
+
+            return true;
+        }
     }
 
     /**
@@ -41,7 +49,10 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        return $user->is($user);
+
+        if ($user->is($user)) {
+            return true;
+        }
     }
 
     /**
@@ -53,7 +64,15 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+        if ($user->userHasRole('admin')) {
+
+            return true;
+        }
+
+        if ($user->id === $post->user_id) {
+
+            return true;
+        }
     }
 
     /**
@@ -65,7 +84,13 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+        if ($user->userHasRole('admin')) {
+
+            return true;
+        }
+        if ($user->id === $post->user_id) {
+            return true;
+        }
     }
 
     /**
