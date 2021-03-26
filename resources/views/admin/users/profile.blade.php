@@ -87,7 +87,7 @@
             </div>
         </div>
     </div>
-
+    @if(auth()->user()->userHasRole('Admin'))
 
     <div class="d-flex flex-column mr-4 ml-4 mb-8">
     <h1 class="text-center mb-4">Roles</h1>
@@ -155,5 +155,7 @@
         </div>
     </div>
     </div>
+
+    @endif
 @endsection
 </x-admin-master>

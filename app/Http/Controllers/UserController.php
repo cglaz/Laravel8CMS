@@ -30,7 +30,7 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'string', 'max:255'],
             'avatar' => ['file'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+
         ]);
 
         if (request('avatar')) {

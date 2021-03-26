@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -58,9 +60,14 @@ class PostController extends Controller
 
     public function view()
     {
+        if (Auth::user()->isAdmin()) {
+            $posts = Post::orderBy('updated_at', 'DESC')->paginate(5);
 
-        $posts = auth()->user()->posts()->paginate(5);
+        } else {
+            $posts = auth()->user()->posts()->paginate(5);
+        }
         return view('admin.posts.posts', ['posts' => $posts]);
+
     }
 
     public function edit(Post $post)

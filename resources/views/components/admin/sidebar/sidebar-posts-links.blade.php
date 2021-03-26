@@ -44,6 +44,7 @@
             </li>
             @endif
 
+            @if(auth()->user()->userHasRole('Admin'))
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAuthorization"
                     aria-expanded="true" aria-controls="collapseAuthorization">
@@ -58,3 +59,4 @@
                     </div>
                 </div>
             </li>
+            @endif
