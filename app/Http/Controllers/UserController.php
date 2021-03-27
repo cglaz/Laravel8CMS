@@ -43,6 +43,20 @@ class UserController extends Controller
         return back();
     }
 
+    public function changePassword(User $user)
+    {
+
+        $inputs = request()->validate([
+
+            'password' => 'required|confirmed|min:8',
+
+        ]);
+
+        $user->update($inputs);
+
+        return back();
+    }
+
     public function destroy(User $user, Request $request)
     {
         $user->delete();

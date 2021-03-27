@@ -60,7 +60,7 @@ class PostController extends Controller
 
     public function view()
     {
-        if (Auth::user()->isAdmin()) {
+        if (auth()->user()->userHasRole('Admin')) {
             $posts = Post::orderBy('updated_at', 'DESC')->paginate(5);
 
         } else {

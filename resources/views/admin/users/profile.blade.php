@@ -53,28 +53,6 @@
                         @enderror
                 </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password"
-                            name="password"
-                            class="form-control"
-                            id="password">
-                            @error('password')
-                                <div class="alert alert-danger">{{$message}}</div>
-                            @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="password-confirmation">Confirm password</label>
-                    <input type="password"
-                            name="password_confirmation"
-                            class="form-control"
-                            id="password-confirmation">
-                            @error('password_confirmation')
-                                <div class="alert alert-danger">{{$message}}</div>
-                            @enderror
-                </div>
-
     		    <div class="form-group">
                     <button type="submit" class="btn btn-primary">
                         Update
@@ -86,8 +64,51 @@
     	    </form>
             </div>
         </div>
+
+        <div class="col-sm-6 mt-5">
+            <div class="d-flex flex-column mr-4 ml-4">
+            <h4 class="text-center mb-4">Change password</h4>
+                <form action="{{route('admin.change.user.password', $user)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password"
+                            name="password"
+                            class="form-control"
+                            id="password">
+                        @error('password')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password-confirmation">Confirm password</label>
+                        <input type="password"
+                            name="password_confirmation"
+                            class="form-control"
+                            id="password-confirmation">
+                        @error('password_confirmation')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-warning">
+                            Update password
+                        </button>
+    		        </div>
+                </form>
+            </div>
+        </div>
+
     </div>
-    @if(auth()->user()->userHasRole('Admin'))
+
+
+
+
+@if(auth()->user()->userHasRole('Admin'))
 
     <div class="d-flex flex-column mr-4 ml-4 mb-8">
     <h1 class="text-center mb-4">Roles</h1>
@@ -155,7 +176,6 @@
         </div>
     </div>
     </div>
-
     @endif
 @endsection
 </x-admin-master>

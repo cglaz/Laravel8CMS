@@ -13,6 +13,7 @@
                 </div>
             </li>
 
+            @if(auth()->user()->userHasRole('Admin'))
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -27,6 +28,7 @@
                     </div>
                 </div>
             </li>
+            @endif
 
             @if(auth()->user()->userHasRole('Admin'))
             <li class="nav-item">
@@ -56,6 +58,23 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{route('admin.view.roles')}}">Roles</a>
                         <a class="collapse-item" href="{{route('admin.view.permissions')}}">Permissions</a>
+                    </div>
+                </div>
+            </li>
+            @endif
+
+            @if(auth()->user())
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile"
+                    aria-expanded="true" aria-controls="collapseProfile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <div id="collapseProfile" class="collapse" aria-labelledby="headingProfilen"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('admin.show.user', auth()->user())}}">Edit profile</a>
+
                     </div>
                 </div>
             </li>
